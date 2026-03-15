@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LuxeGlow Salon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&family=Cormorant:wght@500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<style>
+
+/* COLOR SYSTEM */
+
+:root{
+
+--cream:#faf7f3;
+--cream2:#f2ece6;
+--cream3:#ede4db;
+
+--charcoal:#2c2c2c;
+--dark:#1a1a1a;
+
+--bronze:#b08d57;
+--blush:#e8b4b8;
+
+}
+
+/* GLOBAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+cursor:none;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:var(--cream);
+color:var(--charcoal);
+}
+
+/* CUSTOM CURSOR */
+
+.cursor{
+width:14px;
+height:14px;
+border:2px solid var(--bronze);
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+z-index:9999;
+transform:translate(-50%,-50%);
+}
+
+.cursor2{
+width:35px;
+height:35px;
+border:1px solid var(--charcoal);
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+z-index:9998;
+transform:translate(-50%,-50%);
+}
+
+/* NAVBAR */
+
+nav{
+
+position:fixed;
+top:0;
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:18px 10%;
+
+background:rgba(255,255,255,0.35);
+backdrop-filter:blur(10px);
+
+border-bottom:1px solid #ddd;
+
+z-index:1000;
+
+}
+
+nav h2{
+
+font-family:'Playfair Display';
+color:var(--bronze);
+
+}
+
+nav a{
+
+margin-left:25px;
+text-decoration:none;
+color:var(--charcoal);
+font-weight:500;
+
+}
+
+/* HERO */
+
+.hero{
+
+height:100vh;
+
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url("https://images.unsplash.com/photo-1560066984-138dadb4c035");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+color:white;
+
+}
+
+.hero h1{
+
+font-size:60px;
+font-family:'Playfair Display';
+animation:heroText 2s ease;
+
+}
+
+@keyframes heroText{
+
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.hero p{
+
+margin:15px 0;
+font-size:20px;
+
+}
+
+.btn{
+
+padding:12px 28px;
+background:var(--bronze);
+color:white;
+border-radius:30px;
+text-decoration:none;
+margin:10px;
+display:inline-block;
+transition:.3s;
+
+}
+
+.btn:hover{
+
+background:var(--blush);
+
+}
+
+/* SECTIONS */
+
+section{
+
+padding:90px 10%;
+text-align:center;
+
+}
+
+.about{background:var(--cream2);}
+.services{background:var(--cream3);}
+.work{background:var(--cream);}
+.why{background:var(--cream2);}
+.testimonial{background:var(--cream3);}
+.instagram{background:var(--cream);}
+.contact{background:var(--cream2);}
+.cta{background:var(--cream3);}
+
+/* SECTION TITLE */
+
+.section-title{
+
+font-size:40px;
+font-family:'Playfair Display';
+margin-bottom:50px;
+
+color:var(--bronze);
+
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+
+}
+
+.show{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+/* SERVICES */
+
+.service-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+
+}
+
+.service-card{
+
+background:white;
+padding:30px;
+border-radius:12px;
+
+border:1px solid #ddd;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+
+transition:.4s;
+
+}
+
+.service-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.service-card i{
+
+font-size:30px;
+color:var(--charcoal);
+margin-bottom:10px;
+animation:pulse 3s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.2);}
+100%{transform:scale(1);}
+
+}
+
+/* GALLERY */
+
+.gallery-wrapper{overflow:hidden;}
+
+.gallery-track{
+
+display:flex;
+gap:20px;
+
+animation:scroll 25s linear infinite;
+
+}
+
+.gallery-track img{
+
+height:260px;
+width:360px;
+border-radius:10px;
+object-fit:cover;
+
+}
+
+@keyframes scroll{
+
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+
+}
+
+/* WHY */
+
+.why-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+
+}
+
+.why-box{
+
+background:white;
+padding:25px;
+border-left:4px solid var(--charcoal);
+
+text-align:left;
+
+}
+
+.why-box i{
+
+color:var(--bronze);
+margin-right:8px;
+
+}
+
+/* TESTIMONIAL */
+
+.swiper{
+
+max-width:700px;
+
+}
+
+.testimonial-card{
+
+background:white;
+padding:35px;
+
+border-radius:12px;
+
+border:1px solid #ddd;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+}
+
+.stars{
+
+color:#f7b500;
+margin-bottom:10px;
+
+}
+
+.client-name{
+
+font-family:'Cormorant';
+font-size:22px;
+margin-top:10px;
+color:var(--charcoal);
+
+}
+
+/* INSTAGRAM FLOAT */
+
+.insta-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+
+}
+
+.insta-grid img{
+
+width:100%;
+height:200px;
+
+border-radius:10px;
+
+object-fit:cover;
+
+animation:float 6s infinite ease-in-out;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(20px);}
+50%{transform:translateY(-20px);}
+100%{transform:translateY(20px);}
+
+}
+
+/* CONTACT */
+
+.contact-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+
+}
+
+iframe{
+
+width:100%;
+height:300px;
+border-radius:10px;
+border:1px solid #ddd;
+
+}
+
+/* CTA */
+
+.cta .btn{
+
+animation:glow 2s infinite;
+
+}
+
+@keyframes glow{
+
+0%{box-shadow:0 0 0 rgba(176,141,87,0);}
+50%{box-shadow:0 0 20px rgba(176,141,87,.5);}
+100%{box-shadow:0 0 0 rgba(176,141,87,0);}
+
+}
+
+/* FLOATING SOCIAL */
+
+.social-float{
+
+position:fixed;
+right:20px;
+bottom:20px;
+
+display:flex;
+flex-direction:column;
+gap:12px;
+
+z-index:999;
+
+}
+
+.social-float a{
+
+width:50px;
+height:50px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:var(--charcoal);
+color:white;
+
+border-radius:50%;
+
+font-size:20px;
+text-decoration:none;
+
+}
+
+/* FOOTER */
+
+footer{
+
+background:var(--dark);
+color:#ccc;
+
+padding:60px 10%;
+
+}
+
+.footer-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+
+}
+
+footer h3{
+
+color:white;
+margin-bottom:10px;
+
+}
+
+footer p{
+
+margin:5px 0;
+
+}
+
+footer i{
+
+margin-right:8px;
+color:var(--bronze);
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{font-size:40px;}
+
+.contact-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+<div class="cursor2"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<h2>LuxeGlow</h2>
+
+<div>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#work">Gallery</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<h1>Luxury Hair & Beauty</h1>
+
+<p>Premium Salon Experience in Lucknow</p>
+
+<a class="btn">Book Appointment</a>
+<a class="btn">WhatsApp Now</a>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<h2 class="section-title">About Our Salon</h2>
+
+<p style="max-width:700px;margin:auto">
+
+With over 10 years of experience, LuxeGlow Salon offers premium hair styling, bridal makeup, and luxury skincare services.
+
+</p>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+<h2 class="section-title">Services</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+<i class="fa-solid fa-scissors"></i>
+<h3>Haircut & Styling</h3>
+<p>₹800</p>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-palette"></i>
+<h3>Hair Coloring</h3>
+<p>₹2500</p>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-spa"></i>
+<h3>Keratin Treatment</h3>
+<p>₹4500</p>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-user"></i>
+<h3>Bridal Makeup</h3>
+<p>₹12000</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- WORK -->
+
+<section class="work" id="work">
+
+<h2 class="section-title">Our Work</h2>
+
+<div class="gallery-wrapper">
+
+<div class="gallery-track">
+
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f">
+<img src="https://images.unsplash.com/photo-1595475038784-bbe439ff41e6">
+<img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f">
+<img src="https://images.unsplash.com/photo-1595475038784-bbe439ff41e6">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WHY -->
+
+<section class="why">
+
+<h2 class="section-title">Why Choose Us</h2>
+
+<div class="why-grid">
+
+<div class="why-box"><i class="fa-solid fa-star"></i> Certified Stylists</div>
+<div class="why-box"><i class="fa-solid fa-star"></i> Premium Products</div>
+<div class="why-box"><i class="fa-solid fa-star"></i> Personalized Consultation</div>
+<div class="why-box"><i class="fa-solid fa-star"></i> Hygienic Environment</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIAL -->
+
+<section class="testimonial">
+
+<h2 class="section-title">Testimonials</h2>
+
+<div class="swiper">
+
+<div class="swiper-wrapper">
+
+<div class="swiper-slide">
+<div class="testimonial-card">
+<div class="stars">★★★★★</div>
+<p>Best salon experience I’ve ever had.</p>
+<div class="client-name">Aisha Khan</div>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="testimonial-card">
+<div class="stars">★★★★★</div>
+<p>My bridal makeup looked stunning.</p>
+<div class="client-name">Neha Sharma</div>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="testimonial-card">
+<div class="stars">★★★★★</div>
+<p>Professional and luxury service.</p>
+<div class="client-name">Riya Gupta</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- INSTAGRAM -->
+
+<section class="instagram">
+
+<h2 class="section-title">Instagram</h2>
+
+<div class="insta-grid">
+
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f">
+<img src="https://images.unsplash.com/photo-1595475038784-bbe439ff41e6">
+<img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2 class="section-title">Visit Us</h2>
+
+<div class="contact-grid">
+
+<div>
+
+<p><i class="fa-solid fa-location-dot"></i> Hazratganj, Lucknow</p>
+<p><i class="fa-solid fa-phone"></i> +91 90000 00000</p>
+<p><i class="fa-solid fa-envelope"></i> salon@email.com</p>
+
+<a class="btn">WhatsApp</a>
+
+</div>
+
+<iframe src="https://maps.google.com/maps?q=lucknow&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2 class="section-title">Book Your Appointment Today</h2>
+
+<a class="btn">Call Now</a>
+<a class="btn">WhatsApp Booking</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h3>LuxeGlow Salon</h3>
+
+<p>Luxury hair and beauty services with expert stylists and premium products.</p>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<p><i class="fa-solid fa-phone"></i> +91 90000 00000</p>
+<p><i class="fa-solid fa-envelope"></i> salon@email.com</p>
+
+</div>
+
+<div>
+
+<h3>Address</h3>
+
+<p><i class="fa-solid fa-location-dot"></i> Hazratganj, Lucknow</p>
+
+</div>
+
+<div>
+
+<h3>Working Hours</h3>
+
+<p>Mon – Sat : 10 AM – 8 PM</p>
+<p>Sunday : 11 AM – 6 PM</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- FLOATING SOCIAL -->
+
+<div class="social-float">
+
+<a href="#"><i class="fa-solid fa-phone"></i></a>
+<a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+
+const cursor=document.querySelector(".cursor")
+const cursor2=document.querySelector(".cursor2")
+
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
+cursor2.style.left=e.clientX+"px"
+cursor2.style.top=e.clientY+"px"
+})
+
+const titles=document.querySelectorAll(".section-title")
+
+window.addEventListener("scroll",()=>{
+
+titles.forEach(title=>{
+
+let top=window.scrollY
+let offset=title.offsetTop-500
+
+if(top>offset){
+title.classList.add("show")
+}
+
+})
+
+})
+
+new Swiper(".swiper",{
+loop:true,
+autoplay:{delay:3000},
+});
+
+</script>
+
+</body>
+</html>
