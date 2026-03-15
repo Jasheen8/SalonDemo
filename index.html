@@ -270,7 +270,52 @@ animation:pulse 3s infinite;
 
 /* GALLERY */
 
-.gallery-wrapper{overflow:hidden;}
+.gallery-wrapper{
+overflow:hidden;
+width:100%;
+}
+
+.gallery-track{
+display:flex;
+gap:20px;
+width:max-content;
+animation:scrollGallery 20s linear infinite;
+}
+
+.gallery-track img{
+height:260px;
+width:360px;
+object-fit:cover;
+border-radius:10px;
+flex-shrink:0;
+}
+
+/* animation */
+
+@keyframes scrollGallery{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
+}
+
+/* mobile */
+
+@media(max-width:768px){
+
+.gallery-track img{
+width:260px;
+height:180px;
+}
+
+}
+
+/* .gallery-wrapper{overflow:hidden;}
 
 .gallery-track{
 
@@ -295,7 +340,7 @@ object-fit:cover;
 0%{transform:translateX(0);}
 100%{transform:translateX(-50%);}
 
-}
+} */
 
 /* WHY */
 
@@ -380,7 +425,7 @@ border-radius:10px;
 
 object-fit:cover;
 
-animation:float 6s infinite ease-in-out;
+animation:float 5s infinite ease-in-out;
 
 }
 
@@ -609,7 +654,7 @@ With over 10 years of experience, LuxeGlow Salon offers premium hair styling, br
 
 <h2 class="section-title">Our Work</h2>
 
-<div class="gallery-wrapper">
+<!-- <div class="gallery-wrapper">
 
 <div class="gallery-track">
 
@@ -621,6 +666,29 @@ With over 10 years of experience, LuxeGlow Salon offers premium hair styling, br
 
 <img src="https://wearegurgaon.com/wp-content/uploads/2022/02/best_salons_faridabad.jpg">
 <img src="https://img.freepik.com/free-photo/man-getting-his-hair-cut-barber-shop4_23-2149186452.jpg?semt=ais_hybrid&w=740&q=80">
+
+</div>
+
+</div> -->
+<div class="gallery-wrapper">
+
+<div class="gallery-track">
+
+<!-- ORIGINAL IMAGES -->
+
+<img src="https://wearegurgaon.com/wp-content/uploads/2022/02/best_salons_faridabad.jpg">
+<img src="https://img.freepik.com/free-photo/man-getting-his-hair-cut-barber-shop4_23-2149186452.jpg">
+<img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0">
+<img src="https://cursoscepef.com/wp-content/uploads/2025/12/impq0208.jpg">
+<img src="https://m.media-amazon.com/images/I/81TvpIOUMTL._AC_UF894,1000_QL80_.jpg">
+
+<!-- DUPLICATE IMAGES FOR LOOP -->
+
+<img src="https://wearegurgaon.com/wp-content/uploads/2022/02/best_salons_faridabad.jpg">
+<img src="https://img.freepik.com/free-photo/man-getting-his-hair-cut-barber-shop4_23-2149186452.jpg">
+<img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0">
+<img src="https://cursoscepef.com/wp-content/uploads/2025/12/impq0208.jpg">
+<img src="https://m.media-amazon.com/images/I/81TvpIOUMTL._AC_UF894,1000_QL80_.jpg">
 
 </div>
 
